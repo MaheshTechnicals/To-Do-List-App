@@ -80,6 +80,7 @@ h1 {
 
 text {
   width: 80%;
+  font-size: 18px;
 }
 
 .task button {
