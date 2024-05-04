@@ -57,12 +57,17 @@ let addTask = () => {
   }
 };
 
-// Function to delete task
+// Function to delete task with confirmation
 let deleteTask = (index) => {
-  let tasks = JSON.parse(localStorage.getItem("tasks"));
-  tasks.splice(index, 1);
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-  displayTasks();
+  // Ask for confirmation
+  let confirmation = confirm("Are you sure you want to delete this task?");
+
+  if (confirmation) {
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    tasks.splice(index, 1);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    displayTasks();
+  }
 };
 
 // Function to edit task
