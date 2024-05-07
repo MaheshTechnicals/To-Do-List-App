@@ -41,6 +41,8 @@ let displayTasks = () => {
       output.appendChild(taskDiv);
     });
   }
+
+  toggleClearAllButton(); // Toggle visibility of clear all button
 };
 
 // Function to add task
@@ -98,8 +100,29 @@ let toggleTaskCompletion = (index) => {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
+// Function to toggle visibility of clear all button
+let toggleClearAllButton = () => {
+  let clearAllButton = document.querySelector(".clear-all");
+  let tasks = JSON.parse(localStorage.getItem("tasks")) || []; // Get tasks or an empty array
+  if (tasks.length > 0) {
+    clearAllButton.style.display = "block"; // Show button if tasks are available
+  } else {
+    clearAllButton.style.display = "none"; // Hide button if no tasks are available
+  }
+};
+
+// Function to clear all tasks
+let clearAllTasks = () => {
+  localStorage.removeItem("tasks");
+  displayTasks(); // Update UI
+  toggleClearAllButton(); // Toggle visibility of clear all button
+};
+
 // Event listener for add button
 document.querySelector(".add").addEventListener("click", addTask);
+
+// Event listener for clear all button
+document.querySelector(".clear-all").addEventListener("click", clearAllTasks);
 
 // Initial display of tasks
 displayTasks();

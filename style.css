@@ -53,6 +53,17 @@ h1 {
   font-size: 20px;
 }
 
+.btns {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-all {
+  background: red !important;
+}
+
 .output {
   width: 100%;
   max-width: 800px;
